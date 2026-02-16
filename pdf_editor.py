@@ -24,10 +24,11 @@ def select_files():
 
 def convert():
     # TODO: Add functionality to convert non-pdf files into pdfs
+    
     files_to_convert = select_files()
 
     for f in files_to_convert:
-        if ".doc" 
+        
 
 def split():
     # TODO: Add fucntionality to split a single pdf file into multiple pdf files
