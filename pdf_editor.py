@@ -1,7 +1,7 @@
 import tkinter as tk
-from pdfconverter import convertword
 import sys
 from tkinter import filedialog
+from pypdf import PdfWriter
 
 
 def select_files():
@@ -14,7 +14,7 @@ def select_files():
     file_paths = filedialog.askopenfilenames(
         title="Select Multiple Files",
         initialdir="/", # Default starting directory (Changable)
-        filetypes=(("All files", "."), ("Text files", ".txt"))
+        filetypes=(("All files", "."), ("PDF Files", ".pdf"))
     )
 
     # Destroy the hidden root window after selection
@@ -24,10 +24,7 @@ def select_files():
 
 def convert():
     # TODO: Add functionality to convert non-pdf files into pdfs
-    
-    files_to_convert = select_files()
-
-    for f in files_to_convert:
+    _
         
 
 def split():
@@ -39,7 +36,19 @@ def edit():
     _
 
 def merge():
-    _
+    files_to_merge = select_files()
+
+    merged_pdf = PdfWriter()
+
+    for f in files_to_merge:
+        if ".pdf" not in f:
+            print('Invalid file type')
+            menu()
+        else:
+            merged_pdf.append(f)
+    
+    merged_pdf.write("merged_pdf.pdf")
+
 
 def menu():
     
